@@ -2,11 +2,12 @@ const express = require('express');
 const Twitter = require('twit');
 
 const app = express();
+// Enter twitter api credentials here.
 const client = new Twitter({
-  consumer_key: 'hDEgPvx9cRsuVYgws5QVdYar1',
-  consumer_secret: 'OE5VudYzPWe1e8KmuKXvUpThMeMp98n6qltU9u4WAxZSYmCROH',
-  access_token: '983285074832506881-9IOGr3NGDV9dd7MAT1HmqZSy7ruCu0l',
-  access_token_secret: 'LSxA4ioII24fJpXfbHrA0XD67h55Vk5ezPA3TFIKlnfvc'
+  consumer_key:'', //consumer key
+  consumer_secret:'', //consumer secret
+  access_token:'', // access token
+  access_token_secret:'', // access token secret
 });
 
 app.use(require('cors')());
