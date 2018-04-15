@@ -1,5 +1,6 @@
-#Twitter Test App
-##Tutorials at http://blog.nanthrax.net/?p=827 and https://www.sitepoint.com/building-twitter-app-using-angular/ contributed ideas and techniques used.
+# Twitter Test App
+
+## Tutorials at http://blog.nanthrax.net/?p=827 and https://www.sitepoint.com/building-twitter-app-using-angular/ contributed ideas and techniques used.
 
 1. Clone or download the repo. 
 2. Then, open up twitter-backend/server.js and enter your twitte api credential information.
