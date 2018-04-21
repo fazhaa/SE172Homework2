@@ -1,0 +1,77 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div >
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<div >
+  <ul>
+    <mz-card class="blue-grey darken-1 black-text center-align" [hoverable]="true">
+      <mz-card-title>
+        Search Tweets
+      </mz-card-title>
+      <mz-card-content class="card-content">
+        <input type="text" name="searchInput" [(ngModel)]="searchVal"/>
+        <button (click)="getSearch()" type="submit" >Search</button>
+      </mz-card-content>
+    </mz-card>
+    <li>
+      <h2><button (click)="getHomeTimeline()">get/home_timeline</button></h2>
+    </li>
+    <mz-card *ngIf="userPage"  class="blue-grey darken-1 white-text" [hoverable]="true">
+      <mz-card-title>
+        {{userInfo.name}}
+        <i mz-icon-mdi
+          title="{{userInfo.following ? 'Unfollow' : 'Follow'}}"
+          (click)="toggleFollow(userInfo)"
+          [align]="'right'"
+          [icon]="userInfo.following ? 'account-multiple-minus' : 'account-multiple-plus'">
+        </i>
+      </mz-card-title>
+      <mz-card-content class="card-content">
+        <p>
+          Followers: {{userInfo.followers_count}}
+          <i mz-icon-mdi
+              [align]="'right'"
+              [icon]="'account-multiple-outline'">
+            </i>
+        </p>
+        <p>
+          {{userInfo.description}}
+        </p>
+        <img src="{{userInfo.profile_background_image_url_https}}">
+      </mz-card-content>
+    </mz-card>
+    <mz-card *ngFor="let result of results; let i = index"
+      class="blue-grey darken-1 white-text" [hoverable]="true">
+        <mz-card-title>
+          <p>
+            <span (click)="getUserInfo(result.user.id_str)">
+              @{{result.user.name}} - {{result.created_at | date:'medium'}}
+            </span>
+            
+            <i mz-icon-mdi
+              (click)="toggleFavorite(result)"
+              [align]="'right'"
+              [icon]="result.favorited ? 'star' : 'star-outline'"
+              [size]="'medium'">
+            </i>
+          </p>
+        </mz-card-title>
+        <mz-card-content class="card-content">
+          <i mz-icon-mdi
+            title="{{result.retweeted ? 'Undo Retweet' : 'Retweet'}}"
+            (click)="toggleRetweet(result)"
+            [align]="'left'"
+            [icon]="result.retweeted ? 'account-multiple' : 'account-multiple-outline'">
+          </i>
+          <p>
+            {{result.full_text ? result.full_text : result.text}}
+          </p>
+          <img *ngIf="result.entities.media && result.entities.media.length" 
+            src="{{result.entities.media[0].media_url}}">
+        </mz-card-content>
+    </mz-card>
+  </ul>
+</div>
+
